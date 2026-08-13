@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bảng theo dõi tiến độ 100 ngày làm việc xử lý điểm nghẽn chuyển đổi số - Xã Công Hải, tỉnh Khánh Hòa">
+    <title>Theo dõi Tiến độ 100 ngày làm việc - Xã Công Hải</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="app-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="18" fill="#991b1b"/>
+                        <path d="M20 7L23.7 14.5L32 15.7L26 21.5L27.4 29.8L20 25.9L12.6 29.8L14 21.5L8 15.7L16.3 14.5L20 7Z" fill="#fbbf24"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <div class="header-org">ĐẢNG BỘ XÃ CÔNG HẢI</div>
+                    <h1 id="main-title">Hệ thống theo dõi Kế hoạch 100 ngày làm việc khắc phục điểm nghẽn chuyển đổi số</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="connection-badge" id="connection-badge" title="Trạng thái kết nối">
+                    <span class="connection-dot"></span>
+                    <span class="connection-text">Đang kết nối...</span>
+                </div>
+                <div class="header-date" id="current-date"></div>
+                <button id="btn-admin" class="btn btn-outline btn-admin" title="Đăng nhập quản trị">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span id="btn-admin-text">Đăng nhập</span>
+                </button>
+                <button id="btn-export" class="btn btn-outline" title="Xuất báo cáo">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Xuất báo cáo</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="app-main">
+        <!-- Timeline bar -->
+        <section id="timeline-section" class="glass-card">
+            <div class="timeline-header">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Tiến độ thời gian (100 ngày làm việc)
+                </h2>
+                <div class="timeline-stats">
+                    <span id="days-elapsed" class="stat-badge stat-info">--</span>
+                    <span class="stat-label">ngày làm việc đã qua</span>
+                    <span class="stat-sep">|</span>
+                    <span id="days-remaining" class="stat-badge stat-warning">--</span>
+                    <span class="stat-label">ngày làm việc còn lại</span>
+                </div>
+            </div>
+            <div class="timeline-bar-wrapper">
+                <div class="timeline-bar">
+                    <div class="timeline-progress" id="timeline-progress">
+                        <div class="timeline-glow"></div>
+                    </div>
+                    <div class="timeline-marker" id="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-label" id="marker-label">Hôm nay</div>
+                    </div>
+                </div>
+                <div class="timeline-labels">
+                    <span>10/07/2026</span>
+                    <span>30/11/2026</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <section id="stats-section">
+            <div class="stat-card glass-card" id="stat-total">
+                <div class="stat-card-icon" style="--accent: #6366f1;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </div>
+                <div class="stat-card-info">
+                    <span class="stat-card-number" id="stat-total-num">32</span>
+                    <span class="stat-card-label">Tổng nhiệm vụ</span>
+                </div>
+            </div>
+            <div class="stat-card glass-card" id="stat-completed">
+                <div class="stat-card-icon" style="--accent: #10b981;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div class="stat-card-info">
+                    <span class="stat-card-number" id="stat-completed-num">0</span>
+                    <span class="stat-card-label">Hoàn thành</span>
+                </div>
+            </div>
+            <div class="stat-card glass-card" id="stat-in-progress">
+                <div class="stat-card-icon" style="--accent: #f59e0b;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="stat-card-info">
+                    <span class="stat-card-number" id="stat-inprogress-num">0</span>
+                    <span class="stat-card-label">Đang thực hiện</span>
+                </div>
+            </div>
+            <div class="stat-card glass-card" id="stat-overdue">
+                <div class="stat-card-icon" style="--accent: #ef4444;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div class="stat-card-info">
+                    <span class="stat-card-number" id="stat-overdue-num">0</span>
+                    <span class="stat-card-label">Chậm tiến độ</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Ring -->
+        <section id="progress-section" class="glass-card">
+            <div class="progress-ring-container">
+                <svg class="progress-ring" viewBox="0 0 160 160">
+                    <circle class="progress-ring-bg" cx="80" cy="80" r="70" />
+                    <circle class="progress-ring-fill" id="progress-ring-fill" cx="80" cy="80" r="70" />
+                </svg>
+                <div class="progress-ring-text">
+                    <span class="progress-ring-percent" id="progress-percent">0%</span>
+                    <span class="progress-ring-label">Hoàn thành</span>
+                </div>
+            </div>
+            <div class="progress-breakdown">
+                <h3>Tiến độ theo nhóm</h3>
+                <div id="group-progress-bars"></div>
+            </div>
+        </section>
+
+        <!-- Filter & Search -->
+        <section id="filter-section" class="glass-card">
+            <div class="filter-row">
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="search-input" placeholder="Tìm kiếm nhiệm vụ..." />
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Nhóm:</label>
+                    <select id="filter-group" class="filter-select">
+                        <option value="all">Tất cả</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Trạng thái:</label>
+                    <select id="filter-status" class="filter-select">
+                        <option value="all">Tất cả</option>
+                        <option value="in_progress">Đang thực hiện</option>
+                        <option value="completed">Hoàn thành</option>
+                        <option value="overdue">Chậm tiến độ</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Chủ trì:</label>
+                    <select id="filter-owner" class="filter-select">
+                        <option value="all">Tất cả</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tasks Table -->
+        <section id="tasks-section" class="glass-card">
+            <div class="tasks-header">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Danh sách Nhiệm vụ
+                </h2>
+                <span class="tasks-count" id="tasks-count">32 nhiệm vụ</span>
+            </div>
+            <div class="tasks-table-wrapper">
+                <table id="tasks-table">
+                    <thead>
+                        <tr>
+                            <th class="col-stt">STT</th>
+                            <th class="col-group">Nhóm</th>
+                            <th class="col-task">Nhiệm vụ</th>
+                            <th class="col-owner">Chủ trì</th>
+                            <th class="col-output">Sản phẩm đầu ra</th>
+                            <th class="col-deadline">Thời hạn</th>
+                            <th class="col-status">Trạng thái</th>
+                            <th class="col-note">Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks-tbody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for editing notes -->
+    <div class="modal-overlay" id="note-modal">
+        <div class="modal glass-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Cập nhật ghi chú</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label for="modal-note">Ghi chú / Minh chứng:</label>
+                <textarea id="modal-note" rows="5" placeholder="Nhập ghi chú, minh chứng hoàn thành..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="modal-cancel">Hủy</button>
+                <button class="btn btn-primary" id="modal-save">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export modal -->
+    <div class="modal-overlay" id="export-modal">
+        <div class="modal glass-card modal-wide">
+            <div class="modal-header">
+                <h3>Xuất Báo cáo Tiến độ</h3>
+                <button class="modal-close" id="export-modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="export-content"></div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="export-cancel">Đóng</button>
+                <button class="btn btn-primary" id="export-print" onclick="window.print()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    In báo cáo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth modal -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal glass-card">
+            <div class="modal-header">
+                <h3>🔐 Đăng nhập Quản trị</h3>
+                <button class="modal-close" id="auth-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="auth-desc">Nhập mật khẩu để cập nhật trạng thái nhiệm vụ.</p>
+                <label for="auth-password">Mật khẩu:</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="auth-password" placeholder="Nhập mật khẩu..." autocomplete="off" />
+                    <button type="button" class="btn-toggle-pw" id="btn-toggle-pw" title="Hiện/ẩn mật khẩu">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+                <p class="auth-error" id="auth-error"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="auth-cancel">Hủy</button>
+                <button class="btn btn-primary" id="auth-submit">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast-container"></div>
+
+    <footer id="app-footer">
+        <p>Ban Chỉ đạo 57 xã Công Hải — Kế hoạch hành động 100 ngày làm việc chuyển đổi số</p>
+        <p class="footer-sub">Dữ liệu được đồng bộ qua Supabase • Fallback: localStorage</p>
+    </footer>
+
+    <noscript>
+        <div style="text-align:center;padding:2rem;color:#991b1b;font-weight:700;">Trang web này yêu cầu JavaScript để hoạt động.</div>
+    </noscript>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
