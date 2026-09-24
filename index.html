@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bảng theo dõi tiến độ 100 ngày làm việc xử lý điểm nghẽn chuyển đổi số - Xã Công Hải, tỉnh Khánh Hòa">
-    <title>Theo dõi Tiến độ 100 ngày làm việc - Xã Công Hải</title>
+    <meta name="description" content="Hệ thống theo dõi thực hiện Nghị quyết số 57-NQ/TW — Đảng bộ Xã Công Hải">
+    <title>Theo dõi Nghị quyết 57-NQ/TW — Xã Công Hải</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header id="app-header">
         <div class="header-content">
             <div class="header-left">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="18" fill="#991b1b"/>
-                        <path d="M20 7L23.7 14.5L32 15.7L26 21.5L27.4 29.8L20 25.9L12.6 29.8L14 21.5L8 15.7L16.3 14.5L20 7Z" fill="#fbbf24"/>
-                    </svg>
-                </div>
+                <div class="logo-badge">57</div>
                 <div class="header-text">
-                    <div class="header-org">ĐẢNG BỘ XÃ CÔNG HẢI</div>
-                    <h1 id="main-title">Hệ thống theo dõi Kế hoạch 100 ngày làm việc khắc phục điểm nghẽn chuyển đổi số</h1>
+                    <div class="header-org">ĐẢNG BỘ XÃ CÔNG HẢI — BAN CHỈ ĐẠO 57</div>
+                    <h1 id="main-title">Hệ thống theo dõi thực hiện Nghị quyết số 57-NQ/TW</h1>
                 </div>
             </div>
             <div class="header-right">
@@ -32,12 +29,19 @@
                     <span class="connection-text">Đang kết nối...</span>
                 </div>
                 <div class="header-date" id="current-date"></div>
-                <button id="btn-admin" class="btn btn-outline btn-admin" title="Đăng nhập quản trị">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <button id="btn-admin" class="btn btn-outline btn-admin" title="Đăng nhập Super Admin">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
                     <span id="btn-admin-text">Đăng nhập</span>
                 </button>
-                <button id="btn-export" class="btn btn-outline" title="Xuất báo cáo">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <button id="btn-export" class="btn btn-primary" title="Xuất báo cáo">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
                     <span>Xuất báo cáo</span>
                 </button>
             </div>
@@ -45,170 +49,309 @@
     </header>
 
     <main id="app-main">
-        <!-- Timeline bar -->
-        <section id="timeline-section" class="glass-card">
-            <div class="timeline-header">
-                <h2 class="section-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    Tiến độ thời gian (100 ngày làm việc)
-                </h2>
-                <div class="timeline-stats">
-                    <span id="days-elapsed" class="stat-badge stat-info">--</span>
-                    <span class="stat-label">ngày làm việc đã qua</span>
-                    <span class="stat-sep">|</span>
-                    <span id="days-remaining" class="stat-badge stat-warning">--</span>
-                    <span class="stat-label">ngày làm việc còn lại</span>
-                </div>
+        <!-- Board Switcher Navigation -->
+        <nav id="board-switcher-bar">
+            <div class="board-segmented-control">
+                <button class="board-tab-btn active" id="tab-btn-qd11" data-board="qd11">
+                    <span class="tab-title">Quy định 11-QĐ/TU</span>
+                </button>
+                <button class="board-tab-btn" id="tab-btn-kh100" data-board="kh100">
+                    <span class="tab-title">Kế hoạch 04-KH/BCĐ (100 ngày)</span>
+                </button>
             </div>
-            <div class="timeline-bar-wrapper">
-                <div class="timeline-bar">
-                    <div class="timeline-progress" id="timeline-progress">
-                        <div class="timeline-glow"></div>
+        </nav>
+
+        <!-- ==================== VIEW 1: BẢNG CHUẨN QUY ĐỊNH 11 ==================== -->
+        <div id="view-qd11-board" class="board-view active">
+            <!-- QD11 Sleek KPI Strip -->
+            <section id="qd11-stats-section" class="summary-panel">
+                <div class="kpi-item">
+                    <span class="kpi-label">Tổng điểm tự chấm</span>
+                    <span class="kpi-value text-accent" id="qd11-total-score">0 / 100</span>
+                </div>
+                <div class="kpi-divider"></div>
+                <div class="kpi-item">
+                    <span class="kpi-label" id="qd11-rank-desc">Xếp loại dự kiến</span>
+                    <div class="kpi-value"><span class="rank-badge rank-c" id="qd11-rank-badge">Loại C</span></div>
+                </div>
+                <div class="kpi-divider"></div>
+                <div class="kpi-item">
+                    <span class="kpi-label">Điểm thưởng / Điểm trừ</span>
+                    <span class="kpi-value" id="qd11-bonus-score">+0 / -0</span>
+                </div>
+                <div class="kpi-divider"></div>
+                <div class="kpi-item">
+                    <span class="kpi-label">Hạn tự đánh giá (15/12/2026)</span>
+                    <span class="kpi-value" id="qd11-days-left">--</span>
+                </div>
+            </section>
+
+            <!-- QD11 Table Section with integrated Toolbar -->
+            <section id="qd11-table-section" class="table-card">
+                <div class="table-card-header">
+                    <div class="header-title-wrap">
+                        <h2 class="card-title">Bộ tiêu chí Đánh giá, xếp hạng năm 2026</h2>
+                        <span class="badge-count" id="qd11-count">28 tiêu chí</span>
                     </div>
-                    <div class="timeline-marker" id="timeline-marker">
-                        <div class="marker-dot"></div>
-                        <div class="marker-label" id="marker-label">Hôm nay</div>
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <input type="text" id="qd11-search-input" placeholder="Tìm kiếm tiêu chí..." />
+                        </div>
+                        <select id="qd11-filter-group" class="filter-select">
+                            <option value="all">Tất cả nhóm</option>
+                            <option value="I">I. Chỉ đạo, điều hành (10đ)</option>
+                            <option value="II">II. Kết quả thực hiện (75đ)</option>
+                            <option value="IV">IV. Điểm thưởng (+15đ)</option>
+                            <option value="V">V. Điểm trừ</option>
+                        </select>
+                        <select id="qd11-filter-owner" class="filter-select">
+                            <option value="all">Tất cả cơ quan</option>
+                        </select>
                     </div>
                 </div>
-                <div class="timeline-labels">
-                    <span>10/07/2026</span>
-                    <span>30/11/2026</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- Stats Cards -->
-        <section id="stats-section">
-            <div class="stat-card glass-card" id="stat-total">
-                <div class="stat-card-icon" style="--accent: #6366f1;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <div class="tasks-table-wrapper">
+                    <table id="qd11-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="col-qd11-code">Mã</th>
+                                <th class="col-qd11-name">Nội dung Tiêu chí & Hướng dẫn chấm</th>
+                                <th class="col-qd11-max">Chuẩn</th>
+                                <th class="col-qd11-self">Tự chấm</th>
+                                <th class="col-qd11-owner">Cơ quan chủ trì</th>
+                                <th class="col-qd11-evidence">Minh chứng / Giải trình</th>
+                                <th class="col-qd11-action">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="qd11-tbody"></tbody>
+                    </table>
                 </div>
-                <div class="stat-card-info">
-                    <span class="stat-card-number" id="stat-total-num">32</span>
-                    <span class="stat-card-label">Tổng nhiệm vụ</span>
-                </div>
-            </div>
-            <div class="stat-card glass-card" id="stat-completed">
-                <div class="stat-card-icon" style="--accent: #10b981;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                </div>
-                <div class="stat-card-info">
-                    <span class="stat-card-number" id="stat-completed-num">0</span>
-                    <span class="stat-card-label">Hoàn thành</span>
-                </div>
-            </div>
-            <div class="stat-card glass-card" id="stat-in-progress">
-                <div class="stat-card-icon" style="--accent: #f59e0b;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div class="stat-card-info">
-                    <span class="stat-card-number" id="stat-inprogress-num">0</span>
-                    <span class="stat-card-label">Đang thực hiện</span>
-                </div>
-            </div>
-            <div class="stat-card glass-card" id="stat-overdue">
-                <div class="stat-card-icon" style="--accent: #ef4444;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                </div>
-                <div class="stat-card-info">
-                    <span class="stat-card-number" id="stat-overdue-num">0</span>
-                    <span class="stat-card-label">Chậm tiến độ</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Progress Ring -->
-        <section id="progress-section" class="glass-card">
-            <div class="progress-ring-container">
-                <svg class="progress-ring" viewBox="0 0 160 160">
-                    <circle class="progress-ring-bg" cx="80" cy="80" r="70" />
-                    <circle class="progress-ring-fill" id="progress-ring-fill" cx="80" cy="80" r="70" />
-                </svg>
-                <div class="progress-ring-text">
-                    <span class="progress-ring-percent" id="progress-percent">0%</span>
-                    <span class="progress-ring-label">Hoàn thành</span>
+        <!-- ==================== VIEW 2: BẢNG KẾ HOẠCH 100 NGÀY ==================== -->
+        <div id="view-kh100-board" class="board-view">
+            <!-- Consolidated KH100 Overview Strip -->
+            <section class="summary-panel kh100-summary-panel">
+                <div class="timeline-row">
+                    <div class="timeline-info">
+                        <span class="timeline-title">Chiến dịch 100 ngày (10/07 — 30/11/2026):</span>
+                        <span class="timeline-pill">Đã qua <strong id="days-elapsed">--</strong> ngày</span>
+                        <span class="timeline-dot">•</span>
+                        <span class="timeline-pill">Còn lại <strong id="days-remaining">--</strong> ngày</span>
+                    </div>
+                    <div class="timeline-track-mini">
+                        <div class="timeline-bar-mini" id="timeline-progress"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="progress-breakdown">
-                <h3>Tiến độ theo nhóm</h3>
-                <div id="group-progress-bars"></div>
-            </div>
-        </section>
 
-        <!-- Filter & Search -->
-        <section id="filter-section" class="glass-card">
-            <div class="filter-row">
-                <div class="search-box">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="text" id="search-input" placeholder="Tìm kiếm nhiệm vụ..." />
+                <div class="kpi-row">
+                    <div class="kpi-item">
+                        <span class="kpi-label">Tổng nhiệm vụ</span>
+                        <span class="kpi-value" id="stat-total-num">37</span>
+                    </div>
+                    <div class="kpi-divider"></div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Đã hoàn thành</span>
+                        <div class="kpi-value text-success">
+                            <span id="stat-completed-num">0</span>
+                            <span class="kpi-percent" id="progress-percent">(0%)</span>
+                        </div>
+                    </div>
+                    <div class="kpi-divider"></div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Đang thực hiện</span>
+                        <span class="kpi-value text-warning" id="stat-inprogress-num">0</span>
+                    </div>
+                    <div class="kpi-divider"></div>
+                    <div class="kpi-item">
+                        <span class="kpi-label">Chậm tiến độ</span>
+                        <span class="kpi-value text-danger" id="stat-overdue-num">0</span>
+                    </div>
                 </div>
-                <div class="filter-group">
-                    <label class="filter-label">Nhóm:</label>
-                    <select id="filter-group" class="filter-select">
-                        <option value="all">Tất cả</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">Trạng thái:</label>
-                    <select id="filter-status" class="filter-select">
-                        <option value="all">Tất cả</option>
-                        <option value="in_progress">Đang thực hiện</option>
-                        <option value="completed">Hoàn thành</option>
-                        <option value="overdue">Chậm tiến độ</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">Chủ trì:</label>
-                    <select id="filter-owner" class="filter-select">
-                        <option value="all">Tất cả</option>
-                    </select>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Tasks Table -->
-        <section id="tasks-section" class="glass-card">
-            <div class="tasks-header">
-                <h2 class="section-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                    Danh sách Nhiệm vụ
-                </h2>
-                <span class="tasks-count" id="tasks-count">32 nhiệm vụ</span>
-            </div>
-            <div class="tasks-table-wrapper">
-                <table id="tasks-table">
-                    <thead>
-                        <tr>
-                            <th class="col-stt">STT</th>
-                            <th class="col-group">Nhóm</th>
-                            <th class="col-task">Nhiệm vụ</th>
-                            <th class="col-owner">Chủ trì</th>
-                            <th class="col-output">Sản phẩm đầu ra</th>
-                            <th class="col-deadline">Thời hạn</th>
-                            <th class="col-status">Trạng thái</th>
-                            <th class="col-note">Ghi chú</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tasks-tbody"></tbody>
-                </table>
-            </div>
-        </section>
+            <!-- Tasks Table Section with integrated Toolbar -->
+            <section id="tasks-section" class="table-card">
+                <div class="table-card-header">
+                    <div class="header-title-wrap">
+                        <h2 class="card-title">Danh sách 37 Nhiệm vụ Trọng tâm Kế hoạch 100 ngày</h2>
+                        <span class="badge-count" id="tasks-count">37 nhiệm vụ</span>
+                    </div>
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <input type="text" id="search-input" placeholder="Tìm kiếm nhiệm vụ..." />
+                        </div>
+                        <select id="filter-group" class="filter-select">
+                            <option value="all">Tất cả nhóm</option>
+                        </select>
+                        <select id="filter-status" class="filter-select">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="in_progress">🔶 Đang thực hiện</option>
+                            <option value="completed">✅ Hoàn thành</option>
+                            <option value="overdue">🔴 Chậm tiến độ</option>
+                        </select>
+                        <select id="filter-owner" class="filter-select">
+                            <option value="all">Tất cả cơ quan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tasks-table-wrapper">
+                    <table id="tasks-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="col-stt">STT</th>
+                                <th class="col-group">Nhóm</th>
+                                <th class="col-task">Nhiệm vụ</th>
+                                <th class="col-owner">Cơ quan chủ trì</th>
+                                <th class="col-output">Sản phẩm đầu ra</th>
+                                <th class="col-deadline">Thời hạn</th>
+                                <th class="col-status">Trạng thái</th>
+                                <th class="col-note">Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tasks-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <!-- Modal for editing notes -->
-    <div class="modal-overlay" id="note-modal">
-        <div class="modal glass-card">
+    <!-- Modal for QD11 Score & Evidence Update -->
+    <div class="modal-overlay" id="qd11-modal">
+        <div class="modal glass-card modal-wide">
             <div class="modal-header">
-                <h3 id="modal-title">Cập nhật ghi chú</h3>
+                <h3 id="qd11-modal-title">Cập nhật Tiêu chí Quy định 11</h3>
+                <button class="modal-close" id="qd11-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="qd11-modal-meta">
+                    <div class="modal-meta-row">
+                        <span class="meta-label">Mã tiêu chí:</span>
+                        <strong id="modal-qd11-code" class="meta-value">--</strong>
+                        <span class="meta-sep">|</span>
+                        <span class="meta-label">Nhóm tiêu chí:</span>
+                        <strong id="modal-qd11-group" class="meta-value">--</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-qd11-name"><strong>Nội dung tiêu chí:</strong></label>
+                    <textarea id="modal-qd11-name" rows="2" placeholder="Nội dung tiêu chí..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-qd11-maxscore-input"><strong>Điểm chuẩn tối đa:</strong></label>
+                        <div class="score-input-wrapper">
+                            <input type="number" id="modal-qd11-maxscore-input" step="0.25" placeholder="0" />
+                            <span class="score-input-unit">điểm</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modal-qd11-selfscore"><strong>Điểm tự chấm:</strong></label>
+                        <div class="score-input-wrapper">
+                            <input type="number" id="modal-qd11-selfscore" step="0.25" min="-10" max="25" placeholder="0" />
+                            <span class="score-input-unit">điểm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-qd11-owner-select"><strong>Cơ quan chủ trì:</strong></label>
+                    <select id="modal-qd11-owner-select" class="filter-select"
+                        style="width: 100%; max-width: 100%;"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-qd11-guide-edit"><strong>Hướng dẫn chấm điểm / Căn cứ:</strong></label>
+                    <textarea id="modal-qd11-guide-edit" rows="3" placeholder="Hướng dẫn chấm điểm, cách tính điểm..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-qd11-evidence"><strong>Đường link tài liệu minh chứng (Google Drive / Văn bản số):</strong></label>
+                    <input type="url" id="modal-qd11-evidence" placeholder="https://..." />
+                    <div class="form-hint" id="modal-qd11-evidence-hint">Tài liệu minh chứng theo quy định...</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-qd11-note"><strong>Giải trình cách tính điểm & kết quả:</strong></label>
+                    <textarea id="modal-qd11-note" rows="3" placeholder="Nhập giải trình kết quả thực tế..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="qd11-modal-cancel">Hủy</button>
+                <button class="btn btn-primary" id="qd11-modal-save">Lưu tiêu chí</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for editing tasks (KH 100 days) -->
+    <div class="modal-overlay" id="note-modal">
+        <div class="modal glass-card modal-wide">
+            <div class="modal-header">
+                <h3 id="modal-title">Cập nhật Nhiệm vụ Kế hoạch 100 ngày</h3>
                 <button class="modal-close" id="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <label for="modal-note">Ghi chú / Minh chứng:</label>
-                <textarea id="modal-note" rows="5" placeholder="Nhập ghi chú, minh chứng hoàn thành..."></textarea>
+                <div class="form-group">
+                    <label for="modal-task-name"><strong>Nội dung nhiệm vụ:</strong></label>
+                    <textarea id="modal-task-name" rows="2" placeholder="Nội dung chi tiết nhiệm vụ..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-task-owner-select"><strong>Cơ quan chủ trì:</strong></label>
+                        <select id="modal-task-owner-select" class="filter-select"
+                            style="width: 100%; max-width: 100%;"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-task-partner"><strong>Cơ quan phối hợp:</strong></label>
+                        <input type="text" id="modal-task-partner" placeholder="Đơn vị phối hợp..." />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-task-output"><strong>Sản phẩm đầu ra:</strong></label>
+                        <textarea id="modal-task-output" rows="2" placeholder="Sản phẩm đầu ra cần đạt..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-task-deadline"><strong>Thời hạn hoàn thành:</strong></label>
+                        <input type="text" id="modal-task-deadline" placeholder="VD: 2026-11-30 hoặc Hàng tuần..." />
+                        <div class="form-hint">Nhập định dạng YYYY-MM-DD (để tính hạn) hoặc nhập dạng chữ</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-task-status"><strong>Trạng thái thực hiện:</strong></label>
+                    <select id="modal-task-status" class="filter-select" style="width: 100%; max-width: 100%;">
+                        <option value="in_progress">🔶 Đang thực hiện</option>
+                        <option value="completed">✅ Hoàn thành</option>
+                        <option value="overdue">🔴 Chậm tiến độ</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-note"><strong>Ghi chú / Minh chứng hoàn thành:</strong></label>
+                    <textarea id="modal-note" rows="3" placeholder="Nhập ghi chú, minh chứng hoàn thành..."></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-ghost" id="modal-cancel">Hủy</button>
-                <button class="btn btn-primary" id="modal-save">Lưu</button>
+                <button class="btn btn-primary" id="modal-save">Lưu nhiệm vụ</button>
             </div>
         </div>
     </div>
@@ -217,14 +360,22 @@
     <div class="modal-overlay" id="export-modal">
         <div class="modal glass-card modal-wide">
             <div class="modal-header">
-                <h3>Xuất Báo cáo Tiến độ</h3>
+                <h3>Xuất Báo cáo</h3>
                 <button class="modal-close" id="export-modal-close">&times;</button>
+            </div>
+            <div class="export-tabs">
+                <button class="btn btn-sm btn-outline active" id="btn-export-tab-qd11">Báo cáo Quy định 11</button>
+                <button class="btn btn-sm btn-outline" id="btn-export-tab-kh100">Báo cáo Kế hoạch 100 ngày</button>
             </div>
             <div class="modal-body" id="export-content"></div>
             <div class="modal-footer">
                 <button class="btn btn-ghost" id="export-cancel">Đóng</button>
                 <button class="btn btn-primary" id="export-print" onclick="window.print()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9" />
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                        <rect x="6" y="14" width="12" height="8" />
+                    </svg>
                     In báo cáo
                 </button>
             </div>
@@ -235,16 +386,20 @@
     <div class="modal-overlay" id="auth-modal">
         <div class="modal glass-card">
             <div class="modal-header">
-                <h3>🔐 Đăng nhập Quản trị</h3>
+                <h3>🔐 Đăng nhập Quản trị viên</h3>
                 <button class="modal-close" id="auth-modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p class="auth-desc">Nhập mật khẩu để cập nhật trạng thái nhiệm vụ.</p>
+                <p class="auth-desc">Nhập mật khẩu Super Admin để cập nhật điểm tự chấm và tiến độ nhiệm vụ.</p>
                 <label for="auth-password">Mật khẩu:</label>
                 <div class="password-input-wrapper">
                     <input type="password" id="auth-password" placeholder="Nhập mật khẩu..." autocomplete="off" />
                     <button type="button" class="btn-toggle-pw" id="btn-toggle-pw" title="Hiện/ẩn mật khẩu">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
                     </button>
                 </div>
                 <p class="auth-error" id="auth-error"></p>
@@ -260,15 +415,16 @@
     <div id="toast-container"></div>
 
     <footer id="app-footer">
-        <p>Ban Chỉ đạo 57 xã Công Hải — Kế hoạch hành động 100 ngày làm việc chuyển đổi số</p>
-        <p class="footer-sub">Dữ liệu được đồng bộ qua Supabase • Fallback: localStorage</p>
+        <p>Đảng bộ Xã Công Hải - Ban Chỉ đạo 57 • Cơ quan Thường trực: Phòng Văn hoá - Xã hội</p>
     </footer>
 
     <noscript>
-        <div style="text-align:center;padding:2rem;color:#991b1b;font-weight:700;">Trang web này yêu cầu JavaScript để hoạt động.</div>
+        <div style="text-align:center;padding:2rem;color:#991b1b;font-weight:700;">Trang web này yêu cầu JavaScript để
+            hoạt động.</div>
     </noscript>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
