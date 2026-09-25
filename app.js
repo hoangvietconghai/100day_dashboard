@@ -1148,22 +1148,26 @@ function calculateQd11Scores() {
     let totalScore = regularScore + bonusScore - penaltyScore;
     totalScore = Math.max(0, Math.min(100, Math.round(totalScore * 100) / 100));
 
-    let rank = "Loại D";
-    let rankClass = "rank-d";
-    let rankDesc = "Không hoàn thành (<50đ)";
+    let rank = "Kém";
+    let rankClass = "rank-kem";
+    let rankDesc = "Đạt dưới 50% điểm (<50đ)";
 
     if (totalScore >= 90) {
-        rank = "Loại A";
-        rankClass = "rank-a";
-        rankDesc = "Hoàn thành xuất sắc (≥90đ)";
-    } else if (totalScore >= 75) {
-        rank = "Loại B";
-        rankClass = "rank-b";
-        rankDesc = "Hoàn thành tốt (75-89đ)";
+        rank = "Xuất sắc";
+        rankClass = "rank-xuat-sac";
+        rankDesc = "Đạt từ 90% điểm trở lên (≥90đ)";
+    } else if (totalScore >= 80) {
+        rank = "Tốt";
+        rankClass = "rank-tot";
+        rankDesc = "Đạt từ 80% đến dưới 90% điểm (80-89đ)";
+    } else if (totalScore >= 70) {
+        rank = "Khá";
+        rankClass = "rank-kha";
+        rankDesc = "Đạt từ 70% đến dưới 80% điểm (70-79đ)";
     } else if (totalScore >= 50) {
-        rank = "Loại C";
-        rankClass = "rank-c";
-        rankDesc = "Hoàn thành nhiệm vụ (50-74đ)";
+        rank = "Trung bình";
+        rankClass = "rank-trung-binh";
+        rankDesc = "Đạt từ 50% đến dưới 70% điểm (50-69đ)";
     }
 
     return { regularScore, bonusScore, penaltyScore, totalScore, rank, rankClass, rankDesc };

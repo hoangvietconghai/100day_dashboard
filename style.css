@@ -397,14 +397,16 @@ body {
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 700;
-    padding: 0.15rem 0.65rem;
+    padding: 0.2rem 0.75rem;
     border-radius: var(--radius-sm);
     width: fit-content;
+    white-space: nowrap;
 }
-.rank-badge.rank-a { background: var(--status-success-bg); color: var(--status-success); border: 1px solid var(--status-success-border); }
-.rank-badge.rank-b { background: var(--status-info-bg); color: var(--status-info); border: 1px solid var(--status-info-border); }
-.rank-badge.rank-c { background: var(--status-warning-bg); color: var(--status-warning); border: 1px solid var(--status-warning-border); }
-.rank-badge.rank-d { background: var(--status-danger-bg); color: var(--status-danger); border: 1px solid var(--status-danger-border); }
+.rank-badge.rank-xuat-sac, .rank-badge.rank-a { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.rank-badge.rank-tot, .rank-badge.rank-b { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.rank-badge.rank-kha { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.rank-badge.rank-trung-binh, .rank-badge.rank-c { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+.rank-badge.rank-kem, .rank-badge.rank-d { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 
 /* KH100 Overview Panel */
 .kh100-summary-panel {
