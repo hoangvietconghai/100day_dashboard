@@ -1226,54 +1226,200 @@ body {
     .search-box input { font-size: 0.82rem; }
     .filter-select { width: 100%; max-width: 100%; font-size: 0.8rem; padding: 0.4rem 0.6rem; }
 
-    /* --- Data table mobile --- */
-    .tasks-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .data-table { font-size: 0.78rem; min-width: 680px; }
-    .data-table thead th { font-size: 0.68rem; padding: 0.5rem 0.55rem; }
-    .data-table tbody td { padding: 0.55rem 0.55rem; }
-    .group-header-row td { font-size: 0.76rem; padding: 0.45rem 0.55rem !important; }
+    /* ===== CARD LAYOUT: TABLE → CARDS ON MOBILE ===== */
+    .tasks-table-wrapper { overflow-x: visible; overflow-y: visible; }
 
-    /* Hide less-critical columns on mobile */
-    .col-group { display: none; }
+    .data-table,
+    .data-table thead,
+    .data-table tbody,
+    .data-table tr,
+    .data-table td { display: block; width: 100%; }
 
-    /* Smaller column widths */
-    .col-stt { width: 35px; }
-    .col-qd11-code { width: 55px; }
-    .col-qd11-max { width: 55px; }
-    .col-qd11-self { width: 60px; }
-    .col-qd11-owner { width: 160px; min-width: 140px; }
-    .col-qd11-evidence { min-width: 130px; }
-    .col-qd11-action { width: 60px; }
-    .col-owner { width: 160px; min-width: 140px; }
-    .col-output { min-width: 140px; }
-    .col-deadline { width: 110px; }
-    .col-status { width: 120px; }
-    .col-note { width: 60px; }
+    .data-table thead { display: none; }
 
-    .qd11-criteria-title { font-size: 0.8rem; }
-    .qd11-criteria-guide { font-size: 0.72rem; }
-    .qd11-score-pill { font-size: 0.76rem; padding: 0.1rem 0.4rem; }
-    .task-name { font-size: 0.8rem; }
-    .task-partner { font-size: 0.7rem; }
-    .output-text { font-size: 0.76rem; }
-    .deadline-text { font-size: 0.76rem; }
+    .data-table tbody { display: flex; flex-direction: column; gap: 0.5rem; padding: 0.5rem; }
 
-    /* Smaller action buttons */
-    .btn-edit-qd11, .btn-note { padding: 0.2rem 0.4rem; font-size: 0.7rem; gap: 0.15rem; }
-    .btn-edit-qd11 svg, .btn-note svg { width: 11px; height: 11px; }
-    .btn-edit-qd11 span, .btn-note span { display: none; }
+    /* --- Each row becomes a card --- */
+    .data-table tbody tr {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 0.65rem 0.75rem;
+        position: relative;
+        box-shadow: var(--shadow-sm);
+        transition: border-color 150ms ease;
+    }
+    .data-table tbody tr:hover { background-color: transparent; }
 
-    /* Status & owner selects in table */
-    .status-select { font-size: 0.73rem; padding: 0.25rem 1.2rem 0.25rem 0.45rem; }
-    .owner-select { font-size: 0.73rem; padding: 0.25rem 1.2rem 0.25rem 0.45rem; min-width: 140px; }
+    /* Group header rows stay as section dividers */
+    .data-table tbody tr.group-header-row {
+        background: #f1f5f9 !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        box-shadow: none;
+    }
+    .group-header-row td {
+        font-size: 0.8rem !important;
+        padding: 0 !important;
+        border: none !important;
+    }
 
-    /* Unit badge */
-    .unit-badge { font-size: 0.72rem; padding: 0.15rem 0.45rem; }
+    /* All td cells: block display, no table borders */
+    .data-table tbody td {
+        border: none;
+        padding: 0;
+        text-align: left;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    /* Labels from data-label attribute */
+    .data-table tbody td[data-label]:not([data-label=""])::before {
+        content: attr(data-label);
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        display: block;
+        margin-bottom: 0.1rem;
+        margin-top: 0.4rem;
+    }
+
+    /* ===== QD11 CARD LAYOUT ===== */
+    /* Code badge: top-left */
+    .col-qd11-code {
+        display: inline-block !important;
+        width: auto !important;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #ffffff;
+        background: var(--brand-red);
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+        margin-bottom: 0.35rem;
+    }
+    .col-qd11-code::before { display: none !important; }
+
+    /* Name & guide: full width below code */
+    .col-qd11-name { margin-bottom: 0.25rem; }
+    .qd11-criteria-title { font-size: 0.84rem; }
+    .qd11-criteria-guide { font-size: 0.74rem; margin-top: 0.2rem; }
+
+    /* Scores: inline side-by-side */
+    .col-qd11-max,
+    .col-qd11-self {
+        display: inline-block !important;
+        width: auto !important;
+        margin-right: 0.5rem;
+    }
+    .col-qd11-max::before,
+    .col-qd11-self::before {
+        display: inline !important;
+        margin-right: 0.25rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .qd11-score-pill { font-size: 0.8rem; padding: 0.1rem 0.45rem; }
+
+    /* Owner */
+    .col-qd11-owner { margin-top: 0.15rem; }
+    .owner-select { min-width: 100% !important; width: 100%; font-size: 0.78rem; }
+    .unit-badge { font-size: 0.76rem; }
 
     /* Evidence */
-    .evidence-link-btn { font-size: 0.68rem; }
-    .evidence-note-text { font-size: 0.7rem; }
-    .evidence-empty-text { font-size: 0.7rem; }
+    .col-qd11-evidence { }
+    .evidence-link-btn { font-size: 0.72rem; }
+    .evidence-note-text { font-size: 0.72rem; }
+    .evidence-empty-text { font-size: 0.72rem; }
+
+    /* Action button: positioned top-right of card */
+    .col-qd11-action {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.65rem;
+    }
+    .col-qd11-action::before { display: none !important; }
+    .btn-edit-qd11 {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.72rem;
+        gap: 0.2rem;
+        border-radius: 6px;
+    }
+    .btn-edit-qd11 svg { width: 12px; height: 12px; }
+
+    /* ===== KH100 CARD LAYOUT ===== */
+    /* STT: inline badge */
+    .col-stt {
+        display: inline-block !important;
+        width: auto !important;
+        font-weight: 700;
+        font-size: 0.75rem;
+        color: #ffffff;
+        background: var(--text-muted);
+        padding: 0.1rem 0.45rem;
+        border-radius: 4px;
+        margin-bottom: 0.2rem;
+        margin-right: 0.3rem;
+        text-align: center;
+    }
+    .col-stt::before { display: none !important; }
+
+    /* Group tag: inline next to STT */
+    .col-group {
+        display: inline-block !important;
+        width: auto !important;
+        margin-bottom: 0.2rem;
+    }
+    .col-group::before { display: none !important; }
+    .group-tag { font-size: 0.78rem; }
+
+    /* Task name */
+    .col-task { margin-bottom: 0.15rem; }
+    .task-name { font-size: 0.84rem; }
+    .task-partner { font-size: 0.72rem; }
+
+    /* Output */
+    .col-output { font-size: 0.78rem; color: var(--text-secondary); }
+
+    /* Deadline & Status: inline row */
+    .col-deadline {
+        display: inline-block !important;
+        width: auto !important;
+        margin-right: 0.75rem;
+    }
+    .deadline-text { font-size: 0.78rem; }
+    .col-status {
+        display: inline-block !important;
+        width: auto !important;
+    }
+    .col-status::before {
+        display: inline !important;
+        margin-right: 0.25rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .status-select { font-size: 0.78rem; padding: 0.25rem 1.4rem 0.25rem 0.5rem; }
+    .owner-select { font-size: 0.78rem; }
+
+    /* Owner */
+    .col-owner { }
+
+    /* Note button: positioned top-right */
+    .col-note {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.65rem;
+    }
+    .col-note::before { display: none !important; }
+    .btn-note {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.72rem;
+        gap: 0.2rem;
+        border-radius: 6px;
+    }
+    .btn-note svg { width: 12px; height: 12px; }
 
     /* --- Modal fullscreen on mobile --- */
     .modal-overlay { padding: 0; align-items: flex-end; }
@@ -1344,9 +1490,12 @@ body {
     .kpi-row { gap: 0.4rem; }
     .table-card-header { padding: 0.5rem 0.6rem; }
     .card-title { font-size: 0.78rem; }
-    .data-table { font-size: 0.72rem; min-width: 600px; }
-    .data-table thead th { font-size: 0.64rem; padding: 0.4rem; }
-    .data-table tbody td { padding: 0.45rem 0.4rem; }
+
+    /* Cards get tighter padding */
+    .data-table tbody { padding: 0.35rem; gap: 0.4rem; }
+    .data-table tbody tr { padding: 0.5rem 0.6rem; }
+    .qd11-criteria-title { font-size: 0.78rem; }
+    .task-name { font-size: 0.78rem; }
 
     .glass-card.modal,
     .modal.glass-card,

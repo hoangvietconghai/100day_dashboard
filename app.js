@@ -1295,20 +1295,20 @@ function renderQd11Table() {
         }
 
         row.innerHTML = `
-            <td class="col-qd11-code">${eff.code}</td>
-            <td class="col-qd11-name">
+            <td class="col-qd11-code" data-label="Mã">${eff.code}</td>
+            <td class="col-qd11-name" data-label="">
                 <div class="qd11-criteria-title">${escapeHtml(eff.name)}</div>
                 <div class="qd11-criteria-guide">${escapeHtml(eff.guide)}</div>
             </td>
-            <td class="col-qd11-max">
+            <td class="col-qd11-max" data-label="Chuẩn">
                 <span class="qd11-score-pill max">${eff.maxScore > 0 ? (eff.group === 'IV' ? '+' + eff.maxScore : eff.maxScore) : eff.maxScore}đ</span>
             </td>
-            <td class="col-qd11-self">
+            <td class="col-qd11-self" data-label="Tự chấm">
                 <span class="qd11-score-pill ${scoreClass}">${state.selfScore > 0 && eff.group === 'IV' ? '+' : ''}${state.selfScore}đ</span>
             </td>
-            <td class="col-qd11-owner">${ownerCellHtml}</td>
-            <td class="col-qd11-evidence">${evidenceHtml}</td>
-            <td class="col-qd11-action">
+            <td class="col-qd11-owner" data-label="Chủ trì">${ownerCellHtml}</td>
+            <td class="col-qd11-evidence" data-label="Minh chứng">${evidenceHtml}</td>
+            <td class="col-qd11-action" data-label="">
                 <button class="btn-edit-qd11 ${state.selfScore ? 'has-score' : ''}" data-id="${c.id}" title="${isAdmin ? 'Sửa tiêu chí / Điểm chuẩn / Chấm điểm' : 'Xem chi tiết'}">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     <span>${isAdmin ? 'Sửa/Chấm' : 'Xem'}</span>
@@ -1642,23 +1642,23 @@ function renderTasks() {
         const row = document.createElement("tr");
 
         row.innerHTML = `
-            <td class="col-stt" style="text-align:center; font-weight:600; color:var(--text-muted);">${eff.id}</td>
-            <td class="col-group"><span class="group-tag">${eff.group}</span></td>
-            <td class="col-task">
+            <td class="col-stt" data-label="STT">${eff.id}</td>
+            <td class="col-group" data-label=""><span class="group-tag">${eff.group}</span></td>
+            <td class="col-task" data-label="">
                 <div class="task-name">${escapeHtml(eff.name)}</div>
                 ${eff.partner ? `<div class="task-partner">Phối hợp: ${escapeHtml(eff.partner)}</div>` : ""}
             </td>
-            <td class="col-owner">${ownerCellHtml}</td>
-            <td class="col-output"><div class="output-text">${escapeHtml(eff.output)}</div></td>
-            <td class="col-deadline"><span class="deadline-text ${deadlineInfo.class}">${deadlineInfo.text}</span></td>
-            <td class="col-status">
+            <td class="col-owner" data-label="Chủ trì">${ownerCellHtml}</td>
+            <td class="col-output" data-label="Sản phẩm">${escapeHtml(eff.output)}</td>
+            <td class="col-deadline" data-label="Thời hạn"><span class="deadline-text ${deadlineInfo.class}">${deadlineInfo.text}</span></td>
+            <td class="col-status" data-label="Trạng thái">
                 <select class="status-select ${!isAdmin ? 'readonly' : ''}" data-id="${t.id}" data-status="${effectiveStatus}">
                     <option value="in_progress" ${effectiveStatus === "in_progress" ? "selected" : ""}>🔶 Đang làm</option>
                     <option value="completed" ${effectiveStatus === "completed" ? "selected" : ""}>✅ Hoàn thành</option>
                     <option value="overdue" ${effectiveStatus === "overdue" ? "selected" : ""}>🔴 Chậm</option>
                 </select>
             </td>
-            <td class="col-note">
+            <td class="col-note" data-label="">
                 <button class="btn-note ${state.note ? "has-note" : ""}" data-id="${t.id}" title="${isAdmin ? 'Sửa nhiệm vụ / Cập nhật tiến độ' : (state.note || 'Xem chi tiết')}">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     ${isAdmin ? 'Sửa' : (state.note ? 'Xem' : 'Chi tiết')}
