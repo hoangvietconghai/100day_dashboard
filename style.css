@@ -612,10 +612,11 @@ body {
     background: #f1f5f9 !important;
     font-weight: 700;
     color: var(--brand-red) !important;
-    font-size: 0.84rem;
-    padding: 0.55rem 0.9rem !important;
-    border-bottom: 1px solid var(--border-color) !important;
-    border-top: 1px solid var(--border-color) !important;
+    font-size: 1.12rem;
+    letter-spacing: 0.01em;
+    padding: 0.75rem 1rem !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    border-top: 2px solid #cbd5e1 !important;
 }
 
 /* Empty State */
@@ -630,26 +631,36 @@ body {
 }
 
 /* Table Column Widths & Styles - QD11 */
-.col-qd11-code { width: 75px; text-align: center; font-weight: 700; color: var(--brand-red); }
-.col-qd11-name { min-width: 320px; }
-.col-qd11-max { width: 75px; text-align: center; }
-.col-qd11-self { width: 85px; text-align: center; }
-.col-qd11-owner { width: 240px; min-width: 220px; }
-.col-qd11-evidence { min-width: 170px; }
-.col-qd11-action { width: 80px; text-align: center; }
+.col-qd11-code { width: 55px; min-width: 50px; text-align: center; font-weight: 700; color: var(--brand-red); }
+.col-qd11-name { width: 65%; min-width: 480px; }
+.col-qd11-max { width: 68px; min-width: 60px; text-align: center; white-space: nowrap; }
+.col-qd11-self { width: 72px; min-width: 62px; text-align: center; white-space: nowrap; }
+.col-qd11-owner { width: 165px; min-width: 145px; }
+.col-qd11-evidence { min-width: 130px; }
 
 .qd11-criteria-title {
+    font-size: 1.03rem;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.4;
+    line-height: 1.5;
     white-space: pre-line;
     word-break: break-word;
+    display: inline-block;
+}
+.qd11-criteria-title.clickable-title {
+    cursor: pointer;
+    transition: color 150ms ease;
+}
+.qd11-criteria-title.clickable-title:hover {
+    color: var(--brand-red);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 .qd11-criteria-guide {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-    line-height: 1.35;
+    font-size: 0.88rem;
+    color: #475569;
+    margin-top: 0.35rem;
+    line-height: 1.55;
     white-space: pre-line;
     word-break: break-word;
 }
@@ -1260,8 +1271,9 @@ body {
         box-shadow: none;
     }
     .group-header-row td {
-        font-size: 0.8rem !important;
-        padding: 0 !important;
+        font-size: 1.02rem !important;
+        font-weight: 700 !important;
+        padding: 0.1rem 0 !important;
         border: none !important;
     }
 

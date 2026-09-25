@@ -121,11 +121,10 @@
                             <tr>
                                 <th class="col-qd11-code">Mã</th>
                                 <th class="col-qd11-name">Nội dung Tiêu chí & Hướng dẫn chấm</th>
-                                <th class="col-qd11-max">Chuẩn</th>
+                                <th class="col-qd11-max">Điểm chuẩn</th>
                                 <th class="col-qd11-self">Tự chấm</th>
                                 <th class="col-qd11-owner">Cơ quan chủ trì</th>
                                 <th class="col-qd11-evidence">Minh chứng / Giải trình</th>
-                                <th class="col-qd11-action">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody id="qd11-tbody"></tbody>
@@ -248,7 +247,8 @@
 
                 <div class="form-group">
                     <label for="modal-qd11-name"><strong>Nội dung tiêu chí:</strong></label>
-                    <textarea id="modal-qd11-name" rows="3" placeholder="Nội dung tiêu chí (hỗ trợ nhấn Enter để xuống dòng)..."></textarea>
+                    <textarea id="modal-qd11-name" rows="3"
+                        placeholder="Nội dung tiêu chí (hỗ trợ nhấn Enter để xuống dòng)..."></textarea>
                 </div>
 
                 <div class="form-row">
@@ -263,7 +263,8 @@
                     <div class="form-group">
                         <label for="modal-qd11-selfscore"><strong>Điểm tự chấm:</strong></label>
                         <div class="score-input-wrapper">
-                            <input type="number" id="modal-qd11-selfscore" step="0.25" min="-10" max="25" placeholder="0" />
+                            <input type="number" id="modal-qd11-selfscore" step="0.25" min="-10" max="25"
+                                placeholder="0" />
                             <span class="score-input-unit">điểm</span>
                         </div>
                     </div>
@@ -277,18 +278,21 @@
 
                 <div class="form-group">
                     <label for="modal-qd11-guide-edit"><strong>Hướng dẫn chấm điểm / Căn cứ:</strong></label>
-                    <textarea id="modal-qd11-guide-edit" rows="5" placeholder="Hướng dẫn chấm điểm, cách tính điểm, các mức điểm (nhấn Enter xuống dòng cho từng mức)..."></textarea>
+                    <textarea id="modal-qd11-guide-edit" rows="5"
+                        placeholder="Hướng dẫn chấm điểm, cách tính điểm, các mức điểm (nhấn Enter xuống dòng cho từng mức)..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="modal-qd11-evidence"><strong>Đường link tài liệu minh chứng (Google Drive / Văn bản số):</strong></label>
+                    <label for="modal-qd11-evidence"><strong>Đường link tài liệu minh chứng (Google Drive / Văn bản
+                            số):</strong></label>
                     <input type="url" id="modal-qd11-evidence" placeholder="https://..." />
                     <div class="form-hint" id="modal-qd11-evidence-hint">Tài liệu minh chứng theo quy định...</div>
                 </div>
 
                 <div class="form-group">
                     <label for="modal-qd11-note"><strong>Giải trình cách tính điểm & kết quả:</strong></label>
-                    <textarea id="modal-qd11-note" rows="4" placeholder="Nhập giải trình kết quả thực tế (nhấn Enter xuống dòng cho từng nội dung)..."></textarea>
+                    <textarea id="modal-qd11-note" rows="4"
+                        placeholder="Nhập giải trình kết quả thực tế (nhấn Enter xuống dòng cho từng nội dung)..."></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -308,7 +312,8 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="modal-task-name"><strong>Nội dung nhiệm vụ:</strong></label>
-                    <textarea id="modal-task-name" rows="3" placeholder="Nội dung chi tiết nhiệm vụ (hỗ trợ nhấn Enter để xuống dòng)..."></textarea>
+                    <textarea id="modal-task-name" rows="3"
+                        placeholder="Nội dung chi tiết nhiệm vụ (hỗ trợ nhấn Enter để xuống dòng)..."></textarea>
                 </div>
 
                 <div class="form-row">
@@ -326,7 +331,8 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="modal-task-output"><strong>Sản phẩm đầu ra:</strong></label>
-                        <textarea id="modal-task-output" rows="3" placeholder="Sản phẩm đầu ra cần đạt (nhấn Enter xuống dòng nếu có nhiều sản phẩm)..."></textarea>
+                        <textarea id="modal-task-output" rows="3"
+                            placeholder="Sản phẩm đầu ra cần đạt (nhấn Enter xuống dòng nếu có nhiều sản phẩm)..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="modal-task-deadline"><strong>Thời hạn hoàn thành:</strong></label>
@@ -346,7 +352,8 @@
 
                 <div class="form-group">
                     <label for="modal-note"><strong>Ghi chú / Minh chứng hoàn thành:</strong></label>
-                    <textarea id="modal-note" rows="4" placeholder="Nhập ghi chú, minh chứng hoàn thành (hỗ trợ xuống dòng)..."></textarea>
+                    <textarea id="modal-note" rows="4"
+                        placeholder="Nhập ghi chú, minh chứng hoàn thành (hỗ trợ xuống dòng)..."></textarea>
                 </div>
             </div>
             <div class="modal-footer">

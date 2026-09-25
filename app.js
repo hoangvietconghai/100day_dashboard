@@ -1234,7 +1234,7 @@ function renderQd11Table() {
     document.getElementById("qd11-count").textContent = `${filtered.length} tiêu chí`;
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="empty-state">
+        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <p>Không tìm thấy tiêu chí phù hợp</p>
         </td></tr>`;
@@ -1248,7 +1248,7 @@ function renderQd11Table() {
             currentGroup = eff.group;
             const headerRow = document.createElement("tr");
             headerRow.className = "group-header-row";
-            headerRow.innerHTML = `<td colspan="7">${eff.groupName}</td>`;
+            headerRow.innerHTML = `<td colspan="6">${eff.groupName}</td>`;
             tbody.appendChild(headerRow);
         }
 
@@ -1256,6 +1256,7 @@ function renderQd11Table() {
         const unit = UNITS_DATA[eff.ownerUnit] || UNITS_DATA["phong_vh_xh"];
 
         const row = document.createElement("tr");
+        row.dataset.id = c.id;
 
         let scoreClass = "empty";
         if (state.selfScore > 0) {
@@ -1297,7 +1298,7 @@ function renderQd11Table() {
         row.innerHTML = `
             <td class="col-qd11-code" data-label="Mã">${eff.code}</td>
             <td class="col-qd11-name" data-label="">
-                <div class="qd11-criteria-title">${escapeHtml(eff.name)}</div>
+                <div class="qd11-criteria-title ${isAdmin ? 'clickable-title' : ''}" data-id="${c.id}" ${isAdmin ? 'title="Nhấp để sửa tiêu chí / điểm chuẩn / chấm điểm"' : ''}>${escapeHtml(eff.name)}</div>
                 <div class="qd11-criteria-guide">${escapeHtml(eff.guide)}</div>
             </td>
             <td class="col-qd11-max" data-label="Chuẩn">
@@ -1308,12 +1309,6 @@ function renderQd11Table() {
             </td>
             <td class="col-qd11-owner" data-label="Chủ trì">${ownerCellHtml}</td>
             <td class="col-qd11-evidence" data-label="Minh chứng">${evidenceHtml}</td>
-            <td class="col-qd11-action" data-label="">
-                <button class="btn-edit-qd11 ${state.selfScore ? 'has-score' : ''}" data-id="${c.id}" title="${isAdmin ? 'Sửa tiêu chí / Điểm chuẩn / Chấm điểm' : 'Xem chi tiết'}">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    <span>${isAdmin ? 'Sửa/Chấm' : 'Xem'}</span>
-                </button>
-            </td>
         `;
 
         tbody.appendChild(row);
@@ -2120,9 +2115,16 @@ function setupEventListeners() {
 
     // QD11 Table Clicks & Changes
     document.getElementById("qd11-tbody")?.addEventListener("click", (e) => {
-        const editBtn = e.target.closest(".btn-edit-qd11");
-        if (editBtn) {
-            openQd11Modal(editBtn.dataset.id);
+        // Khi chưa đăng nhập thì không mở bảng chi tiết
+        if (!isAdmin) return;
+
+        // Chỉ khi click vào tiêu đề của tiêu chí (.qd11-criteria-title) thì mới mở bảng chi tiết
+        const titleEl = e.target.closest(".qd11-criteria-title");
+        if (titleEl) {
+            const id = titleEl.dataset.id || titleEl.closest("tr")?.dataset?.id;
+            if (id) {
+                openQd11Modal(id);
+            }
         }
     });
 
