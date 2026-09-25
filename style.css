@@ -641,13 +641,17 @@ body {
 .qd11-criteria-title {
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.35;
+    line-height: 1.4;
+    white-space: pre-line;
+    word-break: break-word;
 }
 .qd11-criteria-guide {
     font-size: 0.78rem;
     color: var(--text-muted);
-    margin-top: 0.15rem;
-    line-height: 1.3;
+    margin-top: 0.25rem;
+    line-height: 1.35;
+    white-space: pre-line;
+    word-break: break-word;
 }
 
 .qd11-score-pill {
@@ -706,12 +710,16 @@ body {
 .task-name {
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.35;
+    line-height: 1.4;
+    white-space: pre-line;
+    word-break: break-word;
 }
 .task-partner {
     font-size: 0.76rem;
     color: var(--text-muted);
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
+    white-space: pre-line;
+    word-break: break-word;
 }
 .group-tag {
     font-weight: 700;
@@ -721,7 +729,9 @@ body {
 .output-text {
     font-size: 0.82rem;
     color: var(--text-secondary);
-    line-height: 1.35;
+    line-height: 1.4;
+    white-space: pre-line;
+    word-break: break-word;
 }
 
 /* Deadlines */
@@ -809,7 +819,9 @@ body {
 .evidence-note-text {
     font-size: 0.76rem;
     color: var(--text-muted);
-    line-height: 1.3;
+    line-height: 1.35;
+    white-space: pre-line;
+    word-break: break-word;
 }
 .evidence-empty-text {
     font-size: 0.76rem;
@@ -989,11 +1001,17 @@ body {
     background: var(--bg-page);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    padding: 0.45rem 0.65rem;
+    padding: 0.5rem 0.65rem;
     font-family: inherit;
     font-size: 0.86rem;
     color: var(--text-primary);
     outline: none;
+    line-height: 1.45;
+}
+.modal-body textarea {
+    white-space: pre-wrap;
+    resize: vertical;
+    min-height: 60px;
 }
 .modal-body input:focus,
 .modal-body textarea:focus {
@@ -1066,6 +1084,8 @@ body {
 .export-report table th, .export-report table td {
     padding: 0.45rem 0.6rem;
     border: 1px solid var(--border-color);
+    white-space: pre-line;
+    word-break: break-word;
 }
 .export-report table th {
     background: #f8fafc;
