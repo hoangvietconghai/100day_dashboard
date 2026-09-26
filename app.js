@@ -1117,6 +1117,8 @@ function switchBoard(boardName) {
         updateProgressRing();
         updateGroupBars();
     }
+
+    requestAnimationFrame(updateStickyOffsets);
 }
 
 // =============================================================================
@@ -2324,6 +2326,47 @@ function showToast(message, type = 'success', duration = 2500) {
     }, duration);
 }
 
+// ===== STICKY HEADER & GROUP POSITIONING DYNAMICS =====
+function updateStickyOffsets() {
+    const header = document.getElementById("app-header");
+    if (!header) return;
+    const headerH = Math.round(header.getBoundingClientRect().height);
+
+    const activeView = document.querySelector(".board-view.active");
+    const theadTh = activeView ? activeView.querySelector(".data-table thead th") : document.querySelector(".data-table thead th");
+    let thH = 38;
+    if (theadTh) {
+        thH = Math.round(theadTh.getBoundingClientRect().height);
+    }
+
+    document.documentElement.style.setProperty("--header-height", `${headerH}px`);
+    document.documentElement.style.setProperty("--th-height", `${thH}px`);
+    document.documentElement.style.setProperty("--sticky-th-top", `${headerH}px`);
+    document.documentElement.style.setProperty("--sticky-group-top", `${headerH + thH - 2}px`);
+}
+
+function initStickyObserver() {
+    updateStickyOffsets();
+
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => {
+            updateStickyOffsets();
+        });
+        const header = document.getElementById("app-header");
+        if (header) ro.observe(header);
+
+        const qd11Thead = document.querySelector("#qd11-table thead");
+        if (qd11Thead) ro.observe(qd11Thead);
+
+        const tasksThead = document.querySelector("#tasks-table thead");
+        if (tasksThead) ro.observe(tasksThead);
+    } else {
+        window.addEventListener("resize", updateStickyOffsets);
+    }
+
+    window.addEventListener("load", updateStickyOffsets);
+}
+
 // ===== MAIN INIT =====
 document.addEventListener("DOMContentLoaded", async () => {
     checkAuthSession();
@@ -2337,6 +2380,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     setupEventListeners();
     addProgressGradient();
+    initStickyObserver();
 
     window.addEventListener("online", async () => {
         if (supabaseClient) {
